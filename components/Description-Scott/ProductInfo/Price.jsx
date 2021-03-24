@@ -40,7 +40,7 @@ Price.propTypes = {
   styleInfo: PropTypes.shape({
     name: PropTypes.string,
     style_id: PropTypes.number,
-    original_price: PropTypes.string,
+    original_price: PropTypes.number,
     sale_price: PropTypes.string,
   }),
 };

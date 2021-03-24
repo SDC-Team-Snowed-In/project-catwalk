@@ -26,6 +26,11 @@ const ProductInfo = ({
     window.scrollTo(0, ref.current.offsetTop);
   };
 
+  // console.log('Style Info') 
+  // console.log('styleInfo', styleInfo);
+  // console.log('styleInfo.original_price', styleInfo.original_price);
+  // console.log('styleInfo', styleInfo);
+
   return (
     <div>
       {productRating !== null ? (
@@ -82,7 +87,7 @@ ProductInfo.propTypes = {
   styleInfo: PropTypes.shape({
     name: PropTypes.string,
     style_id: PropTypes.number,
-    original_price: PropTypes.string,
+    original_price: PropTypes.number,
     sale_price: PropTypes.string,
     // eslint-disable-next-line react/forbid-prop-types
     photos: PropTypes.array,

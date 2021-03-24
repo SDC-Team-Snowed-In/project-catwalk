@@ -26,10 +26,14 @@ const ProductDescription = ({
   const [styleInfo, setStyleInfo] = useState({});
 
   const [isExpanded, setIsExpanded] = useState(false);
+  const server = `http://18.191.91.129:3000`;
+  // const server = `http://localhost:3001`;
+
 
   const getProduct = () => {
+    console.log('Initializing getProduct Fetch on /products/:id')
     const productRequest = {
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${productId}`,
+      url: `${server}/overview/products/${productId}`,
       method: 'get',
       headers: {
         Authorization: config.TOKEN,
@@ -37,15 +41,23 @@ const ProductDescription = ({
     };
     axios(productRequest)
       .then((productResponse) => {
-        setCurrentProductData(productResponse.data);
-        setProductName(productResponse.data.name);
-        setProductNameGlobal(productResponse.data.name);
-        setCategory(productResponse.data.category);
-        setDescription(productResponse.data.description);
-      }).catch((err) => console.error(err)); // eslint-disable-line no-console
+        console.log('Response for /products/id')
+        console.log(productResponse)
+        const productDataRoot = productResponse.data.rows[0]
+        console.log('Response productDataRoot')
+        console.log(productDataRoot)
+        setCurrentProductData(productDataRoot);
+        setProductName(productDataRoot.name);
+        setProductNameGlobal(productDataRoot.name);
+        setCategory(productDataRoot.category);
+        setDescription(productDataRoot.description);
+      }).catch((err) => {
+        console.log('Not successful')
+        console.error(err)
+      }); // eslint-disable-line no-console
 
     const stylesRequest = {
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${productId}/styles`,
+      url: `${server}/overview/styles/${productId}/`,
       method: 'get',
       headers: {
         Authorization: config.TOKEN,
@@ -53,15 +65,21 @@ const ProductDescription = ({
     };
     axios(stylesRequest)
       .then((stylesResponse) => {
-        setAllStyles(stylesResponse.data.results);
+        // console.log('Response for /products/:id/styles')
+        // console.log(stylesResponse)
+        const resultRoot=stylesResponse.data.rows[0].results;
+        // console.log('New Root');
+        // console.log(resultRoot);
+
+        setAllStyles(resultRoot);
 
         let defaultStyle;
 
-        if (stylesResponse.data.results.find((style) => style['default?'] === true) !== undefined) {
-          defaultStyle = stylesResponse.data.results.find((style) => style['default?'] === true);
+        if (resultRoot.find((style) => style['default?'] === true) !== undefined) {
+          defaultStyle = resultRoot.find((style) => style['default?'] === true);
         } else {
           // eslint-disable-next-line prefer-destructuring
-          defaultStyle = stylesResponse.data.results[0];
+          defaultStyle = resultRoot[0];
         }
         setStyleInfo(defaultStyle);
       }).catch((err) => console.error(err)); // eslint-disable-line no-console

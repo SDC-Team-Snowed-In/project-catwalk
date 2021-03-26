@@ -196,30 +196,21 @@ const NewReviewForm = ({
   const sendReview = (e) => {
     e.preventDefault();
     if (!validationCheck()) {
-      const options = {
-        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews',
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: config.TOKEN,
-        },
-        data: {
-          product_id: productId,
-          rating,
-          summary,
-          body,
-          recommend: recommended,
-          name: nickname,
-          email,
-          photos,
-          characteristics: charObj,
-        },
+      const url = 'http://localhost:3005/reviews/';
+
+      const data = {
+        product_id: productId,
+        rating,
+        summary,
+        body,
+        recommend: recommended,
+        name: nickname,
+        email,
+        photos,
+        characteristics: charObj,
       };
 
-      axios(options)
-        .then((res) => {
-          console.log('Review Sent! ', res);
-        })
+      axios.post(url, data)
         .then(() => {
           setGetToggle(true);
         })

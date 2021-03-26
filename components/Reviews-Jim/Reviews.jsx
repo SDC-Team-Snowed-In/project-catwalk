@@ -22,24 +22,23 @@ const Reviews = ({
   const [ratingsLength, setRatingsLength] = useState(selectedRatings.length);
   const [getToggle, setGetToggle] = useState(false);
 
-  const getProductReviews = (product, sort, count = 100) => {
-    let api = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/?product_id=${product}&sort=${sort}`;
+  const getProductReviews = (product, sort, count = 10) => {
+    const url = `http://13.52.186.54/reviews/${product}/${count}`;
 
-    if (count) {
-      api += `&count=${count}`;
-    }
-
-    const options = {
-      url: api,
-      method: 'get',
-      headers: {
-        Authorization: config.TOKEN,
-      },
-    };
-
-    axios(options)
+    axios.get(url)
       .then((res) => {
-        setProductReviews(res.data.results);
+        console.log(res.data);
+
+        let sortedReviews = res.data.sort((a, b) => (b.helpfulness * Date.parse(b.date)) - (a.helpfulness * Date.parse(a.date)));
+
+        if (sort === 'helpfulness') {
+          sortedReviews = res.data.sort((a, b) => b.helpfulness - a.helpfulness);
+        }
+
+        if (sort === 'newest') {
+          sortedReviews = res.data.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+        }
+        setProductReviews(sortedReviews);
       })
       .then(() => {
         setGetToggle(false);

@@ -28,17 +28,18 @@ const Reviews = ({
     axios.get(url)
       .then((res) => {
         console.log(res.data);
-
-        let sortedReviews = res.data.sort((a, b) => (b.helpfulness * Date.parse(b.date)) - (a.helpfulness * Date.parse(a.date)));
+        let sortedReviews = res.data.sort((a, b) => ((b.helpfulness ** 10) * Date.parse(b.date)) - ((a.helpfulness ** 10) * Date.parse(a.date)));
 
         if (sort === 'helpfulness') {
           sortedReviews = res.data.sort((a, b) => b.helpfulness - a.helpfulness);
         }
-
         if (sort === 'newest') {
           sortedReviews = res.data.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
         }
-        setProductReviews(sortedReviews);
+        console.log(sortedReviews);
+
+        const removeReported = sortedReviews.filter((review) => review.reported === false);
+        setProductReviews(removeReported);
       })
       .then(() => {
         setGetToggle(false);

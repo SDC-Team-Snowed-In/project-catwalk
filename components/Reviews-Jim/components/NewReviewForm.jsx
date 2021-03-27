@@ -196,7 +196,7 @@ const NewReviewForm = ({
   const sendReview = (e) => {
     e.preventDefault();
     if (!validationCheck()) {
-      const url = 'http://localhost:3005/reviews/';
+      const url = `http://13.52.186.54/reviews/${productId}`;
 
       const data = {
         product_id: productId,

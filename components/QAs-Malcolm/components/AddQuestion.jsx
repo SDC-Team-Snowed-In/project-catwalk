@@ -52,11 +52,13 @@ function AddQuestion(props) {
     e.preventDefault();
     if (!validationCheck()) {
       const options = {
-        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions',
+        // url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions',
+        // method: 'post',
+        url: 'https://3.128.245.25/qa/questions',
         method: 'post',
-        headers: {
-          Authorization: config.TOKEN,
-        },
+        // headers: {
+        //   Authorization: config.TOKEN,
+        // },
         data: {
           body: question,
           name,

@@ -6,6 +6,9 @@ import CloseIcon from '@material-ui/icons/Close';
 import Head from 'next/head';
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
+import BuildIcon from '@material-ui/icons/Build';
+import KeyboardIcon from '@material-ui/icons/Keyboard';
+import CodeIcon from '@material-ui/icons/Code';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import TerrainIcon from '@material-ui/icons/Terrain';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
@@ -158,6 +161,9 @@ const App = () => {
           />
         </div>
         <BottomNavigation style={{ backgroundColor: '#A9A9A9' }} showLabels>
+          <BottomNavigationAction label="Taylor" value="Taylor" icon={<BuildIcon />} href="https://github.com/taylorsmart" target="_blank" />
+          <BottomNavigationAction label="Nick" value="Nick" icon={<CodeIcon />} href="https://github.com/spacerumsfeld-code" target="_blank" />
+          <BottomNavigationAction label="Johnny" value="Johnny" icon={<KeyboardIcon />} href="https://github.com/jbframe" target="_blank" />
           <BottomNavigationAction label="Scott" value="Scott" icon={<SportsBasketballIcon />} href="https://github.com/Scott-Guinn" target="_blank" />
           <BottomNavigationAction label="Dorien" value="Dorien" icon={<MonetizationOnIcon />} href="https://github.com/Initial-D-cmd" target="_blank" />
           <BottomNavigationAction label="Malcolm" value="Malcolm" icon={<TerrainIcon />} href="https://github.com/Malcolm-Marshall" target="_blank" />

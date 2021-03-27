@@ -26,7 +26,7 @@ const ProductDescription = ({
   const [styleInfo, setStyleInfo] = useState({});
 
   const [isExpanded, setIsExpanded] = useState(false);
-  const server = `http://18.191.91.129:3000`;
+  const server = `http://18.221.158.156`;
   // const server = `http://localhost:3001`;
 
 

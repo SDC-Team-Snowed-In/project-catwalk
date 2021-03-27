@@ -1,4 +1,4 @@
 fec:
   component: "@sls-next/serverless-component@1.18.0"
   inputs:
-    domain:  "www.next-level.best"
+    domain:  "www.next-level-better.com"

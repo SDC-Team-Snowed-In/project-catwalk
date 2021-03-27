@@ -81,7 +81,7 @@ function Q(props) {
     }
     const options = {
       // url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/${qaPath}/${id}/helpful`,
-      url: `http://18.216.172.236:3001/qa/${qaPath}/${id}/helpful`,
+      url: `http://3.128.245.25/qa/${qaPath}/${id}/helpful`,
       method: 'put'
       // headers: {
       //   Authorization: config.TOKEN,
@@ -95,7 +95,7 @@ function Q(props) {
   const report = (e) => {
     const options = {
       // url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${e.target.id}/report`,
-      url: `https://18.216.172.236:3001/qa/answers/${e.target.id}/report`,
+      url: `https://3.128.245.25/qa/answers/${e.target.id}/report`,
       method: 'put',
       // headers: {
       //   Authorization: config.TOKEN,

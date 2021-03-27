@@ -80,7 +80,7 @@ function AddAnswer(props) {
     if (!validationCheck()) {
       const options = {
         // url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${props.questionId}/answers`,
-        url: `https://18.216.172.236:3001/qa/questions/${props.questionId}/answers`,
+        url: `https://3.128.245.25/qa/questions/${props.questionId}/answers`,
         method: 'post',
         // headers: {
         //   Authorization: config.TOKEN,

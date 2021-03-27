@@ -54,7 +54,7 @@ function AddQuestion(props) {
       const options = {
         // url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions',
         // method: 'post',
-        url: 'https://18.216.172.236:3001/qa/questions',
+        url: 'https://3.128.245.25/qa/questions',
         method: 'post',
         // headers: {
         //   Authorization: config.TOKEN,

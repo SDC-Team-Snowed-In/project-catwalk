@@ -14,7 +14,7 @@ const QAs = ({ productId, productName }) => {
   const getQuestions = () => {
     const options = {
       // url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions?product_id=${productId}${count}`,
-      url: `http://18.216.172.236:3001/qa/questions?product_id=${productId}${count}`,
+      url: `http://3.128.245.25/qa/questions?product_id=${productId}${count}`,
       method: 'get',
       // headers: {
       //   Authorization: config.TOKEN,
